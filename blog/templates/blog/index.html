@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="p-4 m-3">
+    <div class="row">
+    {% if items %}
+
+        {% for item in items %}
+            {% if item.result == 'benign' %}
+                <div class="card m-4 outline-success" style="width: 18rem;">
+                    <small>Created by: {{ item.created_by }}</small>
+                    <img src="{{item.image.url}}" class="image-thumbail" alt="image">
+                    <div class="card-body">
+                        <small>Title: {{ item.name }}</small>
+                    </div>
+                    <div class="card-body">
+                        <p>Prediction: {{ item.result }}</p>
+                        <p>Created at: {{ item.created_at }}</p>
+                    </div>
+                    <a href="#" class="btn btn-outline-success btn-sm m-1">View</a>
+                </div>
+            {% else %}
+                <div class="card m-4 outline-danger" style="width: 18rem;">
+                    <small>Created by: {{ item.created_by }}</small>
+                    <img src="{{item.image.url}}" class="image-thumbail" alt="image">
+                    <div class="card-body">
+                        <small>Title: {{ item.name }}</small>
+                    </div>
+                    <div class="card-body">
+                        <p>Prediction: {{ item.result }}</p>
+                        <p>Created at: {{ item.created_at }}</p>
+                    </div>
+                    <a href="#" class="btn btn-outline-danger btn-sm m-1">View</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    {% else %}
+        <h3>No Data</h3>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

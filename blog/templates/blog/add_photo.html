@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block title %}Add Photo{% endblock %}
+
+{% block content %}
+<form action="" class="card position-absolute top-50 start-50 translate-middle p-3 m-3" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{form.as_div}}
+    <button type="submit" class="btn btn-success m-3">Submit</button>
+</form>
+{% endblock %}
